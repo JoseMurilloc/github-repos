@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, FormEvent } from 'react';
 
 import { Title, Form, Repositories } from './styles';
 import logoImage from '../../assets/logo.svg';
@@ -6,13 +6,32 @@ import { FiChevronRight } from 'react-icons/fi';
 
 import api from '../../services/api';
 
+
+interface InterfaceRespository {
+  full_name: string;
+  description: string;
+  owner: {
+    login: string;
+    avatar_url: string;
+  };
+}
+
 // React.FC => React function component
 const Dashboard: React.FC = () => {
   const [newRepo, setNewRepo] = useState('');
-  const [repositories, setRepositories] = useState([]);
+  const [repositories, setRepositories] = useState<InterfaceRespository[]>([]);
 
-  function handleAddrepositories() {
-    console.log('New repository');
+  async function handleAddrepositories(event: FormEvent<HTMLFormElement>): Promise<void> {
+    event.preventDefault();
+
+    const [onwer, repository] = newRepo.split('/');
+    console.log(`Owner: ${onwer} / Respository: ${repository}`);
+
+    const response = await api.get<InterfaceRespository>(`/repos/${onwer}/${repository}`);
+
+    setRepositories([ ...repositories, response.data ]);
+    console.log(repositories);
+
   }
 
   return (
@@ -20,30 +39,32 @@ const Dashboard: React.FC = () => {
       <img src={logoImage} alt="Giyhub Explorer"/>
       <Title>Explore repositorios no Github</Title>
 
-      <Form>
+      <Form onSubmit={handleAddrepositories}>
         <input
-          type="text"
+          value={newRepo}
+          onChange={(e) => setNewRepo(e.target.value)}
           placeholder="Digite o nome do repositório"
-          onChange={e => setNewRepo(e.target.value)}
-        />
+          />
         <button type="submit">Pesquisar</button>
       </Form>
 
       <Repositories>
-        <a href="/">
+        {repositories.map(repository => (
+          <a href="/" key={repository.full_name}>
 
           <img
-            src="https://avatars2.githubusercontent.com/u/43470555?s=460&u=b0e3b8728787100fd42e85fbc2b67b275f0e51af&v=4"
-            alt=""
+            src={repository.owner.avatar_url}
+            alt={repository.owner.login}
           />
 
           <div>
-            <strong>Rocketseat/unform</strong>
-            <span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate</span>
+            <strong>{repository.full_name}</strong>
+            <span>{repository.description}</span>
           </div>
 
           <FiChevronRight size={20} />
         </a>
+        ))}
       </Repositories>
     </>
   );

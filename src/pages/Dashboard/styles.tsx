@@ -77,8 +77,9 @@ export const Repositories = styled.div`
   }
 
   div {
-    margin-left: 16px;
+    margin: 0 16px;
     display: flex;
+    flex: 1;
     flex-direction: column;
 
     strong {
