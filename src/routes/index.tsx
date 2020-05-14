@@ -11,7 +11,7 @@ const Routes: React.FC = () => (
   <BrowserRouter>
     <Switch>
       <Route exact path="/" component={Dashboard} />
-      <Route path="/repository" component={Repository} />
+      <Route path="/repositories/:repository+" component={Repository} />
     </Switch>
   </BrowserRouter>
 )
