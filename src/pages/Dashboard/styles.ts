@@ -6,25 +6,25 @@ interface FormProps {
 }
 
 export const Title = styled.h1`
-  font-size: 48px;
+  font-size: 38px;
   color: #3A3A3A;
-  max-width: 450px;
-  line-height: 56px;
+  max-width: 400px;
+  line-height: 46px;
 
-  margin-top: 80px;
+  margin-top: 65px;
 `;
 
 
 export const Form = styled.form<FormProps>`
-  margin-top: 40px;
-  max-width: 700px;
+  margin-top: 30px;
+  max-width: 600px;
 
   display: flex;
 
   input {
     flex: 1;
-    height: 70px;
-    padding: 0 24px;
+    height: 45px;
+    padding: 0 15px;
     border: 0;
     border-radius: 5px 0 0 5px;
     color: #3a3a3a;
@@ -42,8 +42,8 @@ export const Form = styled.form<FormProps>`
   }
 
   button {
-    width: 210px;
-    height: 70px;
+    width: 189px;
+    height: 45px;
     background: #04d361;
     border-radius: 0 5px 5px 0;
     border: 0;
@@ -58,14 +58,14 @@ export const Form = styled.form<FormProps>`
 `;
 
 export const Repositories = styled.div`
-  margin-top: 80px;
-  max-width: 700px;
+  margin-top: 65px;
+  max-width: 600px;
 
   a {
     background: #fff;
     border-radius: 5px;
     width: 100%;
-    padding: 24px;
+    padding: 20px;
     display: block;
     text-decoration: none;
 
@@ -73,12 +73,12 @@ export const Repositories = styled.div`
     align-items: center;
 
     & + a {
-      margin-top:16px;
+      margin-top:10px;
     }
 
     img {
-      width: 64px;
-      height: 64px;
+      width: 57px;
+      height: 57px;
       border-radius: 50%;
     }
 
@@ -88,18 +88,18 @@ export const Repositories = styled.div`
   }
 
   div {
-    margin: 0 16px;
+    margin: 0 14px;
     display: flex;
     flex: 1;
     flex-direction: column;
 
     strong {
-      font-size: 20px;
+      font-size: 15px;
       color: #3d3d4d;
     }
 
     span {
-      font-size: 18px;
+      font-size: 14px;
       color: #a8a8b3;
       margin-top: 4px;
     }

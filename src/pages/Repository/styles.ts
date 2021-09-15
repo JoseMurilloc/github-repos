@@ -4,7 +4,7 @@ export const Header = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
 
   a {
     display: flex;
@@ -25,15 +25,15 @@ export const Header = styled.header`
 
 export const RepositoryInfo = styled.section`
 
-  margin-top: 10px;
+  margin-top: 7px;
 
   header {
     display: flex;
     align-items: center;
 
     img {
-      width: 120px;
-      height: 120px;
+      width: 100px;
+      height: 100px;
       border-radius: 50%;
     }
 
@@ -42,12 +42,12 @@ export const RepositoryInfo = styled.section`
       margin-left: 24px;
 
       strong {
-        font-size: 36px;
+        font-size: 25px;
         color: #3d3d4d;
       }
 
       p {
-        font-size: 18px;
+        font-size: 15px;
         margin-top: 4px;
         color: #737380;
       }
@@ -57,17 +57,17 @@ export const RepositoryInfo = styled.section`
   ul {
     display: flex;
     list-style: none;
-    margin-top: 40px;
+    margin-top: 30px;
 
     li {
 
       & + li {
-        margin-left: 80px;
+        margin-left: 65px;
       }
 
       strong {
         display: block;
-        font-size: 36px;
+        font-size: 30px;
         color: #3d3d4d;
       }
 
@@ -81,13 +81,13 @@ export const RepositoryInfo = styled.section`
 `;
 
 export const Issues = styled.section`
- margin-top: 80px;
+ margin-top: 65px;
 
   a {
     background: #fff;
     border-radius: 5px;
     width: 100%;
-    padding: 24px;
+    padding: 19px;
     display: block;
     text-decoration: none;
 
@@ -104,7 +104,7 @@ export const Issues = styled.section`
   }
 
   div {
-    margin: 0 16px;
+    margin: 0 13px;
     display: flex;
     flex: 1;
     flex-direction: column;

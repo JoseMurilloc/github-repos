@@ -8,7 +8,7 @@ import api from '../../services/api';
 import { Link } from 'react-router-dom';
 
 
-interface InterfaceRespository {
+interface InterfaceRepository {
   full_name: string;
   description: string;
   owner: {
@@ -21,14 +21,14 @@ interface InterfaceRespository {
 const Dashboard: React.FC = () => {
   const [newRepo, setNewRepo] = useState('');
   const [inputError, setInputError] = useState('');
-  const [repositories, setRepositories] = useState<InterfaceRespository[]>(
+  const [repositories, setRepositories] = useState<InterfaceRepository[]>(
     () => {
-      const storageRespositories = localStorage.getItem(
+      const storageRepositories = localStorage.getItem(
         '@GithubExplorer:repositories'
       );
 
-      if(storageRespositories) {
-        return JSON.parse(storageRespositories);
+      if(storageRepositories) {
+        return JSON.parse(storageRepositories);
       } else {
         return [];
       }
@@ -39,25 +39,25 @@ const Dashboard: React.FC = () => {
     localStorage.setItem('@GithubExplorer:repositories', JSON.stringify(repositories))
   }, [repositories]);
 
-  async function handleAddrepositories(event: FormEvent<HTMLFormElement>): Promise<void> {
+  async function handleAddRepositories(event: FormEvent<HTMLFormElement>): Promise<void> {
     event.preventDefault();
 
     if(!newRepo) {
-      setInputError('Digite o author/nome do repositorio');
+      setInputError('Digite o author/nome do repositório');
       return;
     }
 
     try {
       const [onwer, repository] = newRepo.split('/');
-      console.log(`Owner: ${onwer} / Respository: ${repository}`);
+      console.log(`Owner: ${onwer} / Repository: ${repository}`);
 
-      const response = await api.get<InterfaceRespository>(`/repos/${onwer}/${repository}`);
+      const response = await api.get<InterfaceRepository>(`/repos/${onwer}/${repository}`);
 
       setRepositories([ ...repositories, response.data ]);
       setNewRepo('');
       setInputError('');
     } catch(err) {
-      setInputError('Erro na busca por esse repositorio');
+      setInputError('Erro na busca por esse repositório');
     }
 
     console.log(repositories);
@@ -66,10 +66,10 @@ const Dashboard: React.FC = () => {
 
   return (
     <>
-      <img src={logoImage} alt="Giyhub Explorer"/>
-      <Title>Explore repositorios no Github</Title>
+      <img src={logoImage} alt="Github Explorer"/>
+      <Title>Explore repositórios no Github</Title>
 
-      <Form hasError={Boolean(inputError)} onSubmit={handleAddrepositories}>
+      <Form hasError={Boolean(inputError)} onSubmit={handleAddRepositories}>
         <input
           value={newRepo}
           onChange={(e) => setNewRepo(e.target.value)}
