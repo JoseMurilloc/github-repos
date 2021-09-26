@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useRouteMatch, Link } from 'react-router-dom';
 
+import { useRouteMatch, Link } from 'react-router-dom';
 import { Header, RepositoryInfo, Issues } from './styles';
 import logoImage from '../../assets/logo.svg';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
@@ -10,7 +10,7 @@ interface RepositoryParams {
   repository: string;
 }
 
-interface Repository {
+interface RepositoryTypes {
   full_name: string;
   description: string;
   stargazers_count: number;
@@ -32,10 +32,9 @@ interface Issue {
   }
 }
 
-// React.FC => React function component
 const Repository: React.FC = () => {
   const { params } = useRouteMatch<RepositoryParams>();
-  const [repositories, setRepositories] = useState<Repository | null>(null);
+  const [repositories, setRepositories] = useState<RepositoryTypes | null>(null);
   const [issues, setIssues] = useState<Issue[]>([]);
 
 
