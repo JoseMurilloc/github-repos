@@ -94,14 +94,14 @@ const Repository: React.FC = () => {
 
       <Issues>
         {issues.map(issue => (
-          <Link to={issue.html_url} key={issue.id}>
+          <a  target="_blank" href={issue.html_url} key={issue.id}>
             <div>
               <strong>{issue.title}</strong>
               <span>{issue.user.login}</span>
             </div>
 
             <FiChevronRight size={20} />
-          </Link>
+          </a>
 
         ))}
       </Issues>
